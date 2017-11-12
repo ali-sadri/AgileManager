@@ -1,4 +1,4 @@
-# agileManager
+# AgileManager
 Nov 12, 2017:
 
 This project is the back-end component of an Agile Manager Restful web appliation. It uses the Spring + springboot and hibernate. It is currently configured to use MySql for persistence. (refer to 'resources/application.properties' for DB info). 
