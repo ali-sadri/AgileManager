@@ -8,7 +8,7 @@ Note that you need to create a database and after setting up the database name, 
 I have pushed the whole code base so that the APIs can be tried after downloading the project. 
 The easiest way to call APIs is to import the project in Intellij IDEA (ultimate version that supports Spring and hibernate out of the box) and run the application. (It can be used in other environments of course by including required libraries in your build process). Either maven or gradle can be used for building the application.
 
-As a Spring framework application it contains separate packages of 'model', 'controller', 'services', and 'repository'. 
+As a Spring framework application,  it contains separate packages of 'model', 'controller', 'services', and 'repository'. 
 
 This project is 'work in progress' and what is pushed in so far is only the start. Currently provides the basic CRUD APIs for all controllers. There will be more APIs as I progress. The intention is to utilize Java 8, and as I progress, there will be more of Java 8 features in the code.
 There will be unit testing (for at least all the controller classes). 
