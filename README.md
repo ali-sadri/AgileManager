@@ -7,8 +7,8 @@ I have pushed the whole code base so that the APIs can be tried after downloadin
 The easiest way to call APIs is to import the project in Inellij Idea (ultimate version that supports Spring and hibernate out of the box)
 and run the application. 
 
-This project is a 'work in progress' and what is pushed in so far is only the start.
-There will be unit testing (for at least all the controller classes) to be pushed later. 
+This project is 'work in progress' and what is pushed in so far is only the start.
+There will be unit testing (for at least all the controller classes). 
 Logging and using AspectJ is also something that I will add as I find it is needed for some actions.
 Also handling API messages that are currently plain text in the code. And so many other changes of course.
 
