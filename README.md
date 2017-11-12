@@ -9,7 +9,10 @@ and run the application.
 
 This project is a 'work in progress' and what is pushed in so far is only the start.
 There will be unit testing (for at least all the controller classes) to be pushed later. 
-Also handling API messages that are currently plain text in the code. 
+Logging and using AspectJ is also something that I will add as I find it is needed for some actions.
+Also handling API messages that are currently plain text in the code. And so many other changes of course.
+
 There will be an API description document to be pushed as well.
-And of course the front end component that will be written and pushed in future.
+
+At some point I am hoping to build a front end and real application out of this :)
 I will update this readme document as I progress.
