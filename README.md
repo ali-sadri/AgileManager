@@ -1,7 +1,7 @@
 # agileManager
 Nov 12, 2017:
 
-This project is the back-end component of an Agile Manager restful web appliation. It uses the Spring + springboot and hibernate. It is currently configured to use MySql for persistence. (refer to 'resources/application.properties' for DB info). 
+This project is the back-end component of an Agile Manager Restful web appliation. It uses the Spring + springboot and hibernate. It is currently configured to use MySql for persistence. (refer to 'resources/application.properties' for DB info). 
 
 Note that you need to create a database and after setting up the database name, user name and password, update the 'application.properites' accordingly. If the property 'spring.jpa.hibernate.ddl-auto' in 'application.properties' is set to 'create', the database tables are all created when the application is run for the first time. Make sure to change the value of property 'spring.jpa.hibernate.ddl-auto' to 'update' from that point on to run the application.
 
