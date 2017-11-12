@@ -9,7 +9,8 @@ import java.util.Set;
 
 @Entity
 public class User {
-	@Id
+
+    @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(updatable = false, nullable = false)
 	private Long id;
