@@ -1,14 +1,14 @@
 # agileManager
 Nov 12, 2017:
 
-This project is the back-end component of an Agile Manager restful web appliation. It uses the Spring + springboot and hibernate.It is currently configured to use MySql for persistence. (refer to 'resources/application.properties' for DB info).
+This project is the back-end component of an Agile Manager restful web appliation. It uses the Spring + springboot and hibernate.It is currently configured to use MySql for persistence. (refer to 'resources/application.properties' for DB info). Note that you need to create a database and after setting up the database name, user name and password, update the 'application.properites' accordingly. If the property 'spring.jpa.hibernate.ddl-auto' in 'application.properties' is set to 'create', the database tables are all created when the application is run for the first time. Make sure to change the value of property 'spring.jpa.hibernate.ddl-auto' to 'update' from that point on to run the application.
 
 I have pushed the whole code base so that the APIs can be tried after downloading the project. 
 The easiest way to call APIs is to import the project in Intellij IDEA (ultimate version that supports Spring and hibernate out of the box) and run the application. (It can be used in other environments of course by including required libraries in your build process). Either maven or gradle can be used for building the application.
 
 As a Spring framework application it contains separate packages of 'model', 'controller', 'services', and 'repository'. 
 
-This project is 'work in progress' and what is pushed in so far is only the start. Currently provides the basic CRUD APIs for all controllers. There will be more APIs as I progress. The intention is to utilize Java 8 and as I progress there will be more of Java 8 features in the code.
+This project is 'work in progress' and what is pushed in so far is only the start. Currently provides the basic CRUD APIs for all controllers. There will be more APIs as I progress. The intention is to utilize Java 8, and as I progress, there will be more of Java 8 features in the code.
 There will be unit testing (for at least all the controller classes). 
 Logging and using AspectJ is also something that I will add as I find it is needed for some actions.
 Also handling API messages that are currently plain text in the code. And so many other changes of course.
