@@ -10,13 +10,6 @@ import org.springframework.context.annotation.ComponentScan;
         ".agile.sharedEnums"})
 
 public class Application {
-
-//    @Bean
-//    public TeamServices teamServices(){
-//        return new TeamServices();
-//    }
-
-
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
