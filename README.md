@@ -5,7 +5,7 @@ This project is the back-end component of an Agile Manager restful web appliatio
 
 I have pushed the whole code base so that the APIs can be tried after downloading the project. 
 The easiest way to call APIs is to import the project in Inellij Idea (ultimate version that supports Spring and hibernate out of the box)
-and run the application. (It can be used in other environments of course by including required libraries in your build process)
+and run the application. (It can be used in other environments of course by including required libraries in your build process). Either maven or gradle can be used for building the application.
 
 This project is 'work in progress' and what is pushed in so far is only the start.
 There will be unit testing (for at least all the controller classes). 
