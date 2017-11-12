@@ -1,5 +1,6 @@
 # agileManager
 Nov 12, 2017:
+
 This project is the back-end component of an Agile Manager project. It uses the Spring framework/hibernate and it is configured for
 persistance for a MySql database. (refer to 'resources/application.properties' for DB info).
 
