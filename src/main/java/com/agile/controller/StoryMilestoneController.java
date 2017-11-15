@@ -11,17 +11,18 @@ import java.util.List;
 @RestController @RequestMapping(path = "/storymilestones")
 public class StoryMilestoneController {
 
-	@Autowired private StoryMilestoneServiceImpl storyMilestoneServiceImpl;
+	@Autowired
+    private StoryMilestoneServiceImpl storyMilestoneServiceImpl;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<?> createStoryMilestone(
-		@RequestBody StoryMilestone input) {
-		storyMilestoneServiceImpl.createStoryMilestone(
-			new StoryMilestone(input.getName(), input.getDescription(),
-				input.getEstimatedDoneDate(), input.getComments(),
-				input.getState(), input.getStory()));
-		return ResponseEntity.ok("The new story milestone was Saved");
-	}
+    public ResponseEntity<?> createStoryMilestone(
+        @RequestBody StoryMilestone input) {
+        storyMilestoneServiceImpl.createStoryMilestone(
+            new StoryMilestone(input.getName(), input.getDescription(),
+                input.getSummary(), input.getEstimatedDoneDate(),
+                input.getComments(), input.getState(), input.getStory()));
+        return ResponseEntity.ok("The new story milestone was Saved");
+    }
 
 	@RequestMapping(method = RequestMethod.GET, path = "/{id}")
 	public StoryMilestone readStoryMilestone(@PathVariable Long id) {
@@ -35,19 +36,19 @@ public class StoryMilestoneController {
 
 
 	@RequestMapping(method = RequestMethod.PUT)
-	public StoryMilestone updateStoryMilestone(
-		@RequestBody StoryMilestone input) {
-		return storyMilestoneServiceImpl.updateStoryMilestone(input.getId(),
-			new StoryMilestone(input.getName(), input.getDescription(),
-				input.getEstimatedDoneDate(), input.getComments(),
-				input.getState(), input.getStory()));
-	}
+    public StoryMilestone updateStoryMilestone(
+        @RequestBody StoryMilestone input) {
+        return storyMilestoneServiceImpl.updateStoryMilestone(input.getId(),
+            new StoryMilestone(input.getName(), input.getDescription(),
+                input.getSummary(), input.getEstimatedDoneDate(),
+                input.getComments(), input.getState(), input.getStory()));
+    }
 
 	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
-	public ResponseEntity<?> deleteStoryMilestone(@PathVariable Long id) {
-		storyMilestoneServiceImpl.deleteStoryMilestone(id);
-		return ResponseEntity.ok("The specified story milestone was deleted");
-	}
+    public ResponseEntity<?> deleteStoryMilestone(@PathVariable Long id) {
+        storyMilestoneServiceImpl.deleteStoryMilestone(id);
+        return ResponseEntity.ok("The specified story milestone was deleted");
+    }
 
 
 }

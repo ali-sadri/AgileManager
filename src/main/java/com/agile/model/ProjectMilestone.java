@@ -1,7 +1,7 @@
 package com.agile.model;
 
 
-import com.agile.sharedEnums.State;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -12,14 +12,15 @@ import java.sql.Timestamp;
 
 	@ManyToOne()
 	@JoinColumn(name = "project_id", nullable = true)
+    @JsonBackReference
 	private Project project;
 
 	public ProjectMilestone() {}
 
-	public ProjectMilestone(String name, String description,
+	public ProjectMilestone(String name, String description,String summary,
 		Timestamp estimatedDoneDate, String comments, State state,
 		Project project) {
-		super(name, description, estimatedDoneDate, comments, state);
+		super(name, description, summary, estimatedDoneDate, comments, state);
 		this.project = project;
 	}
 

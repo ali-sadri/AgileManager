@@ -10,7 +10,8 @@ import java.util.List;
 
 @RestController @RequestMapping(path = "/teams") public class TeamController {
 
-	@Autowired private TeamServiceImpl teamServiceImpl;
+	@Autowired
+    private TeamServiceImpl teamServiceImpl;
 
 	@RequestMapping(method = RequestMethod.POST, path = "/add/{name}")
 	public ResponseEntity<?> createTeam(@PathVariable String name) {
@@ -25,15 +26,15 @@ import java.util.List;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Team> readAllTeams() {
-		return teamServiceImpl.findAll();
+	    return teamServiceImpl.findAll();
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
-	public Team updateTeam(@RequestBody Team input) {
-		return teamServiceImpl.updateTeam(input.getId(),
-			new Team(input.getName(), input.getTeamMembers(),
-				input.getAssignedStories()));
-	}
+    public Team updateTeam(@RequestBody Team input) {
+        return teamServiceImpl.updateTeam(input.getId(),
+            new Team(input.getName(), input.getTeamMembers(),
+                input.getAssignedStories()));
+    }
 
 
 	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")

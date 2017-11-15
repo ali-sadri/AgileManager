@@ -1,7 +1,7 @@
 package com.agile.services;
 
 import com.agile.model.StoryMilestone;
-import com.agile.sharedEnums.State;
+import com.agile.model.State;
 
 import java.util.List;
 import java.util.Optional;

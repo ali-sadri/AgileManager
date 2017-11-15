@@ -8,19 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Product {
-
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(updatable = false, nullable = false)
-	private Long id;
-
-	@Column(unique = true, nullable = false)
-	private String name;
-
-	private String summary;
-
-	@Column(name = "full_description")
-	private String fullDescription;
+public class Product extends AgileItem{
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
 	@JsonManagedReference
@@ -34,33 +22,12 @@ public class Product {
 	public Product() {
 	}
 
-	public Product(String name, String summary, String description) {
-		this.name = name;
-		this.summary = summary;
-		this.fullDescription = description;
-	}
-
-	public Product(String name, String summary, String description,
-		User owner) {
-		this(name, summary, description);
-		this.productOwner = owner;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getSummary() {
-		return summary;
-	}
-
-	public String getFullDescription() {
-		return fullDescription;
-	}
+    public Product(String name, String summary, String description, State
+        state, User productOwner, Set<Project> relatedProjects ){
+	    super(name, summary,description,state);
+	    this.productOwner = productOwner;
+	    this.relatedProjects = relatedProjects;
+    }
 
 	public User getProductOwner() {
 		return productOwner;
@@ -68,18 +35,6 @@ public class Product {
 
 	public Set<Project> getRelatedProjects() {
 		return relatedProjects;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setSummary(String summary) {
-		this.summary = summary;
-	}
-
-	public void setFullDescription(String fullDescription) {
-		this.fullDescription = fullDescription;
 	}
 
 	public void setProductOwner(User productOwner) {
@@ -92,7 +47,8 @@ public class Product {
 
 	public Product updateFields(Product product) {
 		this.name = product.name;
-		this.fullDescription = product.fullDescription;
+		this.description = product.description;
+		this.state = product.state;
 		this.productOwner = product.productOwner;
 		this.relatedProjects = product.relatedProjects;
 		this.summary = product.summary;

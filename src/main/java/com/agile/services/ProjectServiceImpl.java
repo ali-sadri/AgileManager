@@ -2,6 +2,7 @@ package com.agile.services;
 
 import com.agile.model.Project;
 import com.agile.repository.ProjectRepository;
+import com.agile.model.State;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +47,7 @@ public class ProjectServiceImpl implements ProjectService{
 	}
 
 	@Override
-	public List<Project> findByState(Project.ProjectState state) {
+	public List<Project> findByState(State state) {
 		return projectRepository.findByState(state);
 	}
 

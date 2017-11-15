@@ -2,7 +2,7 @@ package com.agile.services;
 
 import com.agile.model.ProjectMilestone;
 import com.agile.repository.ProjectMilestoneRepository;
-import com.agile.sharedEnums.State;
+import com.agile.model.State;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,12 +25,12 @@ public class ProjectMilestoneServiceImpl implements ProjectMilestoneService{
 		return projectMilestoneRepository.findOne(projectMilestoneID);
 	}
 
-	@Override public ProjectMilestone updateProjectMilestone(Long id,
-		ProjectMilestone projectMilestone) {
-		return projectMilestoneRepository.save(
-			projectMilestoneRepository.findOne(id)
-				.updateFields(projectMilestone));
-	}
+    @Override public ProjectMilestone updateProjectMilestone(Long id,
+        ProjectMilestone projectMilestone) {
+        return projectMilestoneRepository.save(
+            projectMilestoneRepository.findOne(id)
+                .updateFields(projectMilestone));
+    }
 
 	@Override
 	public void deleteProjectMilestone(Long id) {

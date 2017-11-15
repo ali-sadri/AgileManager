@@ -10,16 +10,17 @@ import java.util.List;
 
 @RestController @RequestMapping(path = "/users") public class UserController {
 
-	@Autowired private UserServiceImpl userServiceImpl;
+	@Autowired
+    private UserServiceImpl userServiceImpl;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<?> createUser(@RequestBody User input) {
-		userServiceImpl.createUser(
-			new User(input.getFirstName(), input.getLastName(),
-				input.getUserID(), input.getEmail(), input.getRole(),
-				input.getTeam()));
-		return ResponseEntity.ok("The new user was Saved");
-	}
+    public ResponseEntity<?> createUser(@RequestBody User input) {
+        userServiceImpl.createUser(
+            new User(input.getFirstName(), input.getLastName(),
+                input.getUserID(), input.getEmail(), input.getRole(),
+                input.getTeam()));
+        return ResponseEntity.ok("The new user was Saved");
+    }
 
 	@RequestMapping(method = RequestMethod.GET, path = "/{id}")
 	public User readUser(@PathVariable Long id) {
@@ -33,15 +34,15 @@ import java.util.List;
 
 
 	@RequestMapping(method = RequestMethod.PUT)
-	public User updateUser(@RequestBody User input) {
-		User inputUser = new User(input.getFirstName(), input.getLastName(),
-			input.getUserID(), input.getEmail(), input.getRole(),
-			input.getTeam());
-		inputUser.setAssignedTasks(input.getAssignedTasks());
-		inputUser.setOwnedProducts(input.getOwnedProducts());
-		inputUser.setOwnedProjects(input.getOwnedProjects());
-		return userServiceImpl.updateUser(input.getId(), inputUser);
-	}
+    public User updateUser(@RequestBody User input) {
+        User inputUser = new User(input.getFirstName(), input.getLastName(),
+            input.getUserID(), input.getEmail(), input.getRole(),
+            input.getTeam());
+        inputUser.setAssignedTasks(input.getAssignedTasks());
+        inputUser.setOwnedProducts(input.getOwnedProducts());
+        inputUser.setOwnedProjects(input.getOwnedProjects());
+        return userServiceImpl.updateUser(input.getId(), inputUser);
+    }
 
 	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
 	public ResponseEntity<?> deleteUser(@PathVariable Long id) {

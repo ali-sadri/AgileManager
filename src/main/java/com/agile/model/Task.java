@@ -1,18 +1,11 @@
 package com.agile.model;
 
-import com.agile.sharedEnums.State;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 
 @Entity
-public class Task {
-
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(updatable = false, nullable = false)
-	private Long id;
-
-	private String summary;
+public class Task extends AgileItem {
 
 	@ManyToOne()
 	@JoinColumn(name = "story_id", nullable = true)
@@ -24,10 +17,6 @@ public class Task {
 	@JsonBackReference
 	private User assignedUser;
 
-	@Column(columnDefinition = "enum('New','InProgress','InTesting','Done')")
-	@Enumerated(EnumType.STRING)
-	private State state;
-
 	@Column(name = "estimated_hours")
 	private Long estimatedHours;
 
@@ -35,22 +24,14 @@ public class Task {
 
 	public Task() {}
 
-	public Task(String summary, String comments, User assignedUser, Long
+	public Task(String name, String summary, String description, String
+        comments, User assignedUser, Long
 			estimatedHours, Story relatedStory, State state){
-		this.summary = summary;
+	    super(name, summary, description, state);
 		this.comments = comments;
 		this.assignedUser = assignedUser;
 		this.estimatedHours = estimatedHours;
 		this.relatedStory = relatedStory;
-		this.state = state;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getSummary() {
-		return summary;
 	}
 
 	public Story getRelatedStory() {
@@ -61,20 +42,12 @@ public class Task {
 		return assignedUser;
 	}
 
-	public State getState() {
-		return state;
-	}
-
 	public Long getEstimatedHours() {
 		return estimatedHours;
 	}
 
 	public String getComments() {
 		return comments;
-	}	
-
-	public void setSummary(String summary) {
-		this.summary = summary;
 	}
 
 	public void setRelatedStory(Story relatedStory) {
@@ -83,10 +56,6 @@ public class Task {
 
 	public void setAssignedUser(User assignedUser) {
 		this.assignedUser = assignedUser;
-	}
-
-	public void setState(State state) {
-		this.state = state;
 	}
 
 	public void setEstimatedHours(Long estimatedHours) {
@@ -98,6 +67,8 @@ public class Task {
 	}
 
 	public Task updateFields(Task task){
+	    this.name = task.name;
+	    this.description = task.description;
 		this.summary = task.summary;
 		this.assignedUser = task.assignedUser;
 		this.comments = task.comments;
