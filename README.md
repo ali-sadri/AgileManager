@@ -20,3 +20,6 @@ There will be an API description document to be pushed as well.
 At some point I am hoping to build a front end and real application out of this :)
 
 I will update this readme document as I progress.
+
+Nov 15, 2017:
+Pushed new changes with some refactoring for model objects and also added two simple design documents (pdf) for model objects.
