@@ -1,7 +1,7 @@
 package com.agile.repository;
 
 import com.agile.model.Task;
-import com.agile.sharedEnums.State;
+import com.agile.model.State;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

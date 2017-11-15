@@ -10,16 +10,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController @RequestMapping(path = "/tasks") public class TaskController {
-	@Autowired private TaskServiceImpl taskServiceImpl;
+
+    @Autowired
+    private TaskServiceImpl taskServiceImpl;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<?> createTask(@RequestBody Task input) {
-		taskServiceImpl.createTask(
-			new Task(input.getSummary(), input.getComments(),
-				input.getAssignedUser(), input.getEstimatedHours(),
-				input.getRelatedStory(), input.getState()));
-		return ResponseEntity.ok("The new task was Saved");
-	}
+    public ResponseEntity<?> createTask(@RequestBody Task input) {
+        taskServiceImpl.createTask(new Task(input.getName(), input.getSummary(),
+            input.getDescription(), input.getComments(),
+            input.getAssignedUser(), input.getEstimatedHours(),
+            input.getRelatedStory(), input.getState()));
+        return ResponseEntity.ok("The new task was Saved");
+    }
 
 	@RequestMapping(method = RequestMethod.GET, path = "/{id}")
 	public Task readTask(@PathVariable Long id) {
@@ -28,16 +30,17 @@ import java.util.List;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Task> readAllTasks() {
-		return taskServiceImpl.findAll();
+	    return taskServiceImpl.findAll();
 	}
 
 
 	@RequestMapping(method = RequestMethod.PUT)
 	public Task updateTask(@RequestBody Task input) {
 		return taskServiceImpl.updateTask(input.getId(),
-			new Task(input.getSummary(), input.getComments(),
-				input.getAssignedUser(), input.getEstimatedHours(),
-				input.getRelatedStory(), input.getState()));
+			new Task(input.getName(), input.getSummary(),
+                input.getDescription(), input.getComments(),
+                input.getAssignedUser(), input.getEstimatedHours(),
+                input.getRelatedStory(), input.getState()));
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")

@@ -2,7 +2,7 @@ package com.agile.services;
 
 import com.agile.model.Task;
 import com.agile.repository.TaskRepository;
-import com.agile.sharedEnums.State;
+import com.agile.model.State;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

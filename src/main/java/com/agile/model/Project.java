@@ -9,18 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Project {
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(updatable = false, nullable = false)
-	private Long id;
-
-	@Column(unique = true, nullable = false)
-	private String name;
-
-	private String summary;
-
-	@Column(name = "full_description")
-	private String fullDescription;
+public class Project extends AgileItem{
 
 	@ManyToOne()
 	@JoinColumn(name = "product_id", nullable = true)
@@ -32,10 +21,6 @@ public class Project {
 
 	@Column(name = "estimated_end_date")
 	private Timestamp estimatedEndDate;
-
-	@Column(columnDefinition = "enum('New','InProgress','Complete')")
-	@Enumerated(EnumType.STRING)
-	private ProjectState state;
 
 	@ManyToOne()
 	@JoinColumn(name = "owner_id", nullable = true)
@@ -50,54 +35,20 @@ public class Project {
 	@JsonManagedReference
 	private Set<ProjectMilestone> milestones = 	new HashSet<>();
 
-
 	public Project() {
 	}
 
-	public Project(String name, String summary, Product product) {
-		this.name = name;
-		this.summary = summary;
+	public Project(String name, String summary, String description,
+        State state, Product product, Timestamp estimatedEndDate, Timestamp
+        startDate, Set<ProjectMilestone> milestones, User projectOwner,
+        Set<Story> relatedStories) {
+		super(name, summary, description, state);
+		this.projectOwner = projectOwner;
 		this.product = product;
-	}
-
-	public Project(String name, String summary, Product product,
-		Timestamp startDate, Timestamp estimatedEndDate) {
-		this(name, summary, product);
+		this.relatedStories = relatedStories;
+		this.milestones = milestones;
 		this.startDate = startDate;
 		this.estimatedEndDate = estimatedEndDate;
-	}
-
-	public Project(String name, String summary, Product product,
-		Timestamp startDate, Timestamp estimatedEndDate, String
-		fullDescription,
-		Set<ProjectMilestone> milestones, User projectOwner,
-		Set<Story> relatedStories, ProjectState state) {
-		this(name, summary, product, startDate, estimatedEndDate);
-		this.fullDescription = fullDescription;
-		this.milestones = milestones;
-		this.projectOwner = projectOwner;
-		this.relatedStories = relatedStories;
-	}
-
-
-	public enum ProjectState {
-		New, InProgress, Complete
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getSummary() {
-		return summary;
-	}
-
-	public String getFullDescription() {
-		return fullDescription;
 	}
 
 	public Product getProduct() {
@@ -112,10 +63,6 @@ public class Project {
 		return estimatedEndDate;
 	}
 
-	public ProjectState getState() {
-		return state;
-	}
-
 	public Set<ProjectMilestone> getMilestones() {
 		return milestones;
 	}
@@ -128,18 +75,6 @@ public class Project {
 		return relatedStories;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setSummary(String summary) {
-		this.summary = summary;
-	}
-
-	public void setFullDescription(String fullDescription) {
-		this.fullDescription = fullDescription;
-	}
-
 	public void setProduct(Product product) {
 		this.product = product;
 	}
@@ -150,10 +85,6 @@ public class Project {
 
 	public void setEstimatedEndDate(Timestamp estimatedEndDate) {
 		this.estimatedEndDate = estimatedEndDate;
-	}
-
-	public void setState(ProjectState state) {
-		this.state = state;
 	}
 
 	public void setMilestones(Set<ProjectMilestone> milestones) {
@@ -173,7 +104,7 @@ public class Project {
 		this.product = project.product;
 		this.summary = project.summary;
 		this.estimatedEndDate = project.estimatedEndDate;
-		this.fullDescription = project.fullDescription;
+		this.description = project.description;
 		this.milestones = project.milestones;
 		this.projectOwner = project.projectOwner;
 		this.relatedStories = project.relatedStories;

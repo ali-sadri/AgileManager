@@ -1,6 +1,5 @@
 package com.agile.model;
 
-import com.agile.sharedEnums.State;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -10,17 +9,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-@Entity public class Story {
-
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(updatable = false, nullable = false) private Long id;
-
-	private String name;
+@Entity
+public class Story extends AgileItem{
 
 	@Column(name = "acceptance_criteria")
 	private String acceptanceCriteria;
-
-	private String description;
 
 	@ManyToOne()
 	@JoinColumn(name = "project_id", nullable = true)
@@ -32,10 +25,6 @@ import java.util.Set;
 	@Column(columnDefinition = "enum('Yes','No')")
 	@Enumerated(EnumType.STRING)
 	private Continuation continuation;
-
-	@Column(columnDefinition = "enum('New','InProgress','InTesting','Done')")
-	@Enumerated(EnumType.STRING)
-	private State state;
 
 	@Column(name = "start_date")
 	private Timestamp startDate;
@@ -57,48 +46,33 @@ import java.util.Set;
 	@JsonManagedReference
 	private Set<Task> relatedTasks = new HashSet<>();
 
-	public Story(String name, String acceptanceCriteria, Team assignedTeam,
-		String comments, Continuation continuation, Long continuedFromStoryId,
-		String description, Timestamp estimatedEndDate,
-		Set<StoryMilestone> milestones, Project relatedProject,
-		Set<Task> relatedTasks, Long size, Timestamp startDate, State state) {
-		this.name = name;
+    public Story() {
+    }
+
+	public Story(String name, String summary, String description, State
+        state,Team assignedTeam, String comments, Continuation continuation,
+        Long continuedFromStoryId, Timestamp startDate, Timestamp estimatedEndDate,
+        Set<StoryMilestone> milestones, Project relatedProject, Set<Task> relatedTasks, Long size, String acceptanceCriteria) {
+		super(name, summary, description,state);
 		this.acceptanceCriteria = acceptanceCriteria;
 		this.assignedTeam = assignedTeam;
 		this.comments = comments;
 		this.continuation = continuation;
 		this.continuedFromStoryId = continuedFromStoryId;
-		this.description = description;
 		this.estimatedEndDate = estimatedEndDate;
 		this.milestones = milestones;
 		this.relatedProject = relatedProject;
 		this.relatedTasks = relatedTasks;
 		this.size = size;
 		this.startDate = startDate;
-		this.state = state;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "story")
 	@JsonManagedReference
 	private Set<StoryMilestone> milestones = new HashSet<>();
 
-	public Story() {
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
 	public String getAcceptanceCriteria() {
 		return acceptanceCriteria;
-	}
-
-	public String getDescription() {
-		return description;
 	}
 
 	public Project getRelatedProject() {
@@ -111,10 +85,6 @@ import java.util.Set;
 
 	public Continuation getContinuation() {
 		return continuation;
-	}
-
-	public State getState() {
-		return state;
 	}
 
 	public Timestamp getStartDate() {
@@ -145,16 +115,8 @@ import java.util.Set;
 		return milestones;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public void setAcceptanceCriteria(String acceptanceCriteria) {
 		this.acceptanceCriteria = acceptanceCriteria;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public void setRelatedProject(Project relatedProject) {
@@ -167,10 +129,6 @@ import java.util.Set;
 
 	public void setContinuation(Continuation continuation) {
 		this.continuation = continuation;
-	}
-
-	public void setState(State state) {
-		this.state = state;
 	}
 
 	public void setStartDate(Timestamp startDate) {

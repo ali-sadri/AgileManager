@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class User {
+public class User{
 
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -54,17 +54,12 @@ public class User {
 	public User(){}
 
 	public User(String firstName, String lastName, String userID, String email,
-		Role role) {
+		Role role, Team team) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userID = userID;
 		this.email = email;
 		this.role = role;
-	}
-
-	public User(String firstName, String lastName, String userID, String email,
-		Role role, Team team) {
-		this(firstName, lastName, userID, email, role);
 		this.team = team;
 	}
 
@@ -76,7 +71,8 @@ public class User {
 		return firstName;
 	}
 
-	public String getLastName() { return lastName; }
+	public String getLastName()
+    { return lastName; }
 
 	public String getEmail() {
 		return email;
