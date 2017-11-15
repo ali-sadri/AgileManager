@@ -23,4 +23,4 @@ I will update this readme document as I progress.
 
 Nov 15, 2017:
 
-Pushed new changes with some refactoring for model objects and also added two simple design documents (pdf) for model objects.
+Pushed new changes with some refactoring for model objects and also added two simple design documents in the designDocs directory for model objects.
