@@ -5,7 +5,7 @@ This project is the back-end component of an Agile Manager Restful web appliatio
 
 Note that you need to create a database and after setting up the database name, user name and password, update the 'application.properites' accordingly. If the property 'spring.jpa.hibernate.ddl-auto' in 'application.properties' is set to 'create', the database tables are all created when the application is run for the first time. Make sure to change the value of property 'spring.jpa.hibernate.ddl-auto' to 'update' from that point on to run the application.
 
-I have pushed the whole code base and the easiest way to call APIs is to import the project in Intellij IDEA (ultimate version that supports Spring and hibernate out of the box) and run the application. (It can be used in other environments of course by including required libraries in your build process). Either maven or gradle can be used for building the application.
+I have pushed the whole code base and the easiest way to call APIs is to import the project in Intellij IDEA (ultimate version that supports Spring and hibernate out of the box) and run the application. (It can be used in other environments of course by including required libraries in your build process). Either maven or gradle can be used for build.
 
 As a Spring framework application,  it contains separate packages of 'model', 'controller', 'services', and 'repository'. 
 
